@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eacccf744dbb9b340aec5c1251a3292e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc2721dc8706a474b97273837abcf0b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.08, y: 0.25}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  health: 5
+  health: 1
   sprites:
-  - {fileID: 21300000, guid: eacccf744dbb9b340aec5c1251a3292e, type: 3}
-  - {fileID: 21300000, guid: 2cb6b3a10d7306a4b9565bbd6bf62a33, type: 3}
+  - {fileID: 21300000, guid: cc2721dc8706a474b97273837abcf0b7, type: 3}
+  - {fileID: 21300000, guid: a6e222d8fe0f8434fb2c6133fdf9998d, type: 3}
 --- !u!50 &-6297188012932009129
 Rigidbody2D:
   serializedVersion: 4

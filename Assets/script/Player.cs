@@ -13,6 +13,13 @@ public class Player : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
+    public float life;
+    public Sprite[] sprites;
+    SpriteRenderer spriteRenderer;
+
+    public GameManager gm;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +31,10 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+    }
+    void Awake() 
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Move()
@@ -55,6 +66,22 @@ public class Player : MonoBehaviour
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
     }
 
+    void Hit(int dmg)
+    {
+        life -= dmg;
+        spriteRenderer.sprite = sprites[1];
+        Invoke("ReturnSprite", 0.1f);
+        if(life < 0)
+        {
+            
+            gameObject.SetActive(false); // 전투기 비활성화 gm.RespawnPlayer(); 이걸 ui에 넣어서 1코더 느낌으로다가 만들기
+        } 
+    }
+    void ReturnSprite()
+    {
+        spriteRenderer.sprite = sprites[0];
+    }
+
     void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "Border")
         {
@@ -73,6 +100,22 @@ public class Player : MonoBehaviour
                 isTouchLeft = true;
                 break;
             }
+        }
+        if(collision.gameObject.tag == "EnemyBullet")
+        {
+            enemyshot es = collision.gameObject.GetComponent<enemyshot>();
+            if (es != null)
+            {
+                Hit(es.dmg);
+            }
+            
+
+
+        }
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Hit(1);
+            Destroy(collision.gameObject);
         }
     }
 
